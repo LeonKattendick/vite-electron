@@ -1,6 +1,10 @@
 import { app, BrowserWindow } from 'electron';
+import { join } from 'node:path';
 
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'development';
+
+const DIST_ELECTRON = join(__dirname, '..');
+const DIST = join(DIST_ELECTRON, './dist');
 
 export let mainWindow: BrowserWindow;
 
@@ -17,7 +21,7 @@ const createWindow = () => {
   mainWindow.show();
 
   if (IS_DEVELOPMENT) mainWindow.loadURL('http://localhost:5173/');
-  else mainWindow.loadFile('index.html');
+  else mainWindow.loadFile(join(DIST, 'index.html'));
 };
 
 app.whenReady().then(() => {

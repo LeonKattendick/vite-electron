@@ -1,12 +1,12 @@
 {
   "name": "vite-electron",
   "version": "0.0.1",
+  "main": "dist/electron.js",
   "scripts": {
-    "web:dev": "vite",
-    "web:build": "tsc && vite build",
-    "electron:compile": "tsc --outDir dist/ src/electron.ts",
-    "electron:dev": "npm run electron:compile && electron dist/electron.js",
-    "dev": "cross-env NODE_ENV=development concurrently -k \"npm run web:dev\" \"npm run electron:dev\""
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "run": "npm run build && electron dist/electron.js",
+    "package": "npm run build && electron-builder"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -16,10 +16,11 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
-    "concurrently": "^7.6.0",
-    "cross-env": "^7.0.3",
     "electron": "^23.1.4",
+    "electron-builder": "^23.6.0",
     "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "vite": "^4.2.0",
+    "vite-plugin-electron": "^0.11.1",
+    "vite-plugin-electron-renderer": "^0.12.1"
   }
 }
